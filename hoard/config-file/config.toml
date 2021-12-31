@@ -1,0 +1,108 @@
+exclusivity = [
+    # Either on Linux server or desktop
+    ["linux", "linux_server"],
+]
+
+
+########################
+##### Environments #####
+########################
+
+# Generic Linux
+[envs.linux]
+os = ["linux"]
+
+# Generic Linux server
+[envs.linux_server]
+os = ["linux"]
+# Proxy for determining if on Linux server or desktop
+# Assumes sshd does not run on desktops
+path_exists = [
+    "/etc/ssh/sshd_config",
+]
+
+# Neovim - terminal or GUI
+[envs.nvim]
+exe_exists = ["nvim", "nvim-qt"]
+
+# Python Poetry
+[envs.pypoetry]
+exe_exists = ["poetry"]
+
+# Starship shell prompt
+[envs.starship]
+exe_exists = ["starship"]
+
+# Tmux shell prompt
+[envs.tmux]
+exe_exists = ["tmux"]
+
+# Vim - terminal or GUI
+[envs.vim]
+exe_exists = ["vim", "gvim"]
+
+# Generic Windows
+[envs.windows]
+os = ["windows"]
+
+# XDG_CONFIG_HOME environment variable is set
+[envs.xdg_config_set]
+env = [
+    { var = "XDG_CONFIG_HOME" } 
+]
+
+
+##################
+##### Hoards #####
+##################
+
+# Bash rcfile
+[hoards.bash.rcfile]
+"linux" = "${HOME}/"
+
+# Bash aliases directory
+[hoards.bash.aliases]
+"linux" = "${HOME}/"
+
+# Hoard config file
+[hoards.hoard.config-file]
+"linux" = "${HOME}/.config/hoard/"
+"linux|xdg_config_set" = "${XDG_CONFIG_HOME}/hoard/"
+"windows" = "${APPDATA}/shadow53/hoard/"
+
+# Neovim init file - desktop
+[hoards.nvim.init-desktop]
+"linux|nvim" = "${HOME}/.config/nvim/"
+"linux|xdg_config_set|nvim" = "${XDG_CONFIG_HOME}/nvim/"
+"windows|nvim" = "${APPDATA}/Local/nvim/"
+
+# Neovim init file - server
+[hoards.nvim.init-server]
+"linux_server|nvim" = "${HOME}/.config/nvim/"
+"linux_server|xdg_config_set|nvim" = "${XDG_CONFIG_HOME}/nvim/"
+
+# Python Poetry config file
+[hoards.pypoetry.config-file]
+"linux|pypoetry" = "${HOME}/.config/pypoetry/"
+"linux|xdg_config_set|pypoetry" = "${XDG_CONFIG_HOME}/pypoetry/"
+"windows|pypoetry" = "${APPDATA}/Roaming/pypoetry/"
+
+# Starship config file
+[hoards.starship.config-file]
+"linux|starship" = "${HOME}/.config/"
+"linux|xdg_config_set|starship" = "${XDG_CONFIG_HOME}/"
+"windows|starship" = "${USERPROFILE}/.config/"
+
+# Tmux config file
+[hoards.tmux.config-file]
+"linux|tmux" = "${HOME}/.tmux.conf"
+
+# Vim rcfile - desktop
+[hoards.vim.rcfile-desktop]
+"linux|vim" = "${HOME}/"
+"windows|vim" = "${USERPROFILE}/vimfiles/"
+
+# Vim rcfile - server
+[hoards.vim.rcfile-server]
+"linux_server|vim" = "${HOME}/.vimrc"
+"windows|vim" = "${USERPROFILE}/vimfiles/"

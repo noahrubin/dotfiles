@@ -1,0 +1,46 @@
+add_newline = true
+format = """$python $username$hostname $directory $git_branch $git_commit $git_status $line_break $character"""
+
+[aws]
+disabled = true
+
+[character]
+format = "$symbol "
+success_symbol = "[❯](white)"
+error_symbol = "[❯](white)"
+vicmd_symbol = "[❮](white)"
+
+[cmd_duration]
+disabled = true
+
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style)"
+truncation_length = 0
+truncate_to_repo = true
+style = "248"
+
+[git_branch]
+format = "[$branch]($style)"
+symbol = ""
+style = "white"
+
+[git_commit]
+commit_hash_length = 5
+only_detached = false
+tag_disabled = true
+style = "white"
+
+[hostname]
+ssh_only = true
+format = "[@$hostname]($style)"
+style = "bright-blue"
+
+[python]
+format = "\\([$virtualenv]($style)\\)"
+style = "white"
+
+[username]
+format = "[$user]($style)"
+show_always = true
+style_user = "bright-blue"
+style_root = "bold red"
