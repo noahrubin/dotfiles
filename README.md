@@ -17,8 +17,8 @@ On Linux, you can use the following commands:
 
 ```bash
 HOARD_DATA_HOME=$(test -z "${XDG_DATA_HOME}" && echo "${HOME}/.local/share/hoard/" || echo "${XDG_DATA_HOME}/hoard/")
-git clone https://github.com/noahrubin/dotfiles.git "${HOARD_DATA_HOME}"
-hoard -c "${HOARD_DATA_HOME}/hoard/config-file/config.toml" restore hoard
+git clone https://github.com/noahrubin/dotfiles.git "${HOARD_DATA_HOME}/hoards/"
+hoard -c "${HOARD_DATA_HOME}/hoards/hoard/config-file/config.toml" restore hoard
 ```
 
 ## Applications and Operating Systems Supported
