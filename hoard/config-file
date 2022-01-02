@@ -56,42 +56,46 @@ env = [
 ##### Hoards #####
 ##################
 
-# Bash rcfile
-[hoards.bash.rcfile]
-"linux" = "${HOME}/"
-
 # Bash aliases directory
 [hoards.bash.aliases]
-"linux" = "${HOME}/"
+"linux" = "${HOME}/.bash_aliases.d/"
+
+# Bash rcfile
+[hoards.bash.bashrc]
+"linux" = "${HOME}/.bashrc"
+
+# Bash custom extensions directory
+[hoards.bash.extensions]
+"linx" = "${HOME}/.bashrc.d/"
 
 # Hoard config file
 [hoards.hoard.config-file]
-"linux" = "${HOME}/.config/hoard/"
-"linux|xdg_config_set" = "${XDG_CONFIG_HOME}/hoard/"
-"windows" = "${APPDATA}/shadow53/hoard/"
+"linux" = "${HOME}/.config/hoard/config.toml"
+"linux|xdg_config_set" = "${XDG_CONFIG_HOME}/hoard/config.toml"
+"windows" = "${APPDATA}/shadow53/hoard/config.toml"
 
 # Neovim init file - desktop
 [hoards.nvim.init-desktop]
-"linux|nvim" = "${HOME}/.config/nvim/"
-"linux|xdg_config_set|nvim" = "${XDG_CONFIG_HOME}/nvim/"
-"windows|nvim" = "${APPDATA}/Local/nvim/"
+"linux|nvim" = "${HOME}/.config/nvim/init.vim"
+"linux|xdg_config_set|nvim" = "${XDG_CONFIG_HOME}/nvim/init.vim"
+"windows|nvim" = "${APPDATA}/Local/nvim/init.vim"
 
 # Neovim init file - server
 [hoards.nvim.init-server]
-"linux_server|nvim" = "${HOME}/.config/nvim/"
-"linux_server|xdg_config_set|nvim" = "${XDG_CONFIG_HOME}/nvim/"
+"linux_server|nvim" = "${HOME}/.config/nvim/init.vim"
+"linux_server|xdg_config_set|nvim" = "${XDG_CONFIG_HOME}/nvim/init.vim"
 
 # Python Poetry config file
 [hoards.pypoetry.config-file]
-"linux|pypoetry" = "${HOME}/.config/pypoetry/"
-"linux|xdg_config_set|pypoetry" = "${XDG_CONFIG_HOME}/pypoetry/"
-"windows|pypoetry" = "${APPDATA}/Roaming/pypoetry/"
+"linux|pypoetry" = "${HOME}/.config/pypoetry/config.toml"
+"linux|xdg_config_set|pypoetry" = "${XDG_CONFIG_HOME}/pypoetry/config.toml"
+"windows|pypoetry" = "${APPDATA}/Roaming/pypoetry/config.toml"
 
 # Starship config file
 [hoards.starship.config-file]
-"linux|starship" = "${HOME}/.config/"
-"linux|xdg_config_set|starship" = "${XDG_CONFIG_HOME}/"
-"windows|starship" = "${USERPROFILE}/.config/"
+"linux|starship" = "${HOME}/.config/starship.toml"
+"linux|xdg_config_set|starship" = "${XDG_CONFIG_HOME}/starship.toml"
+"windows|starship" = "${USERPROFILE}/.config/starship.toml"
 
 # Tmux config file
 [hoards.tmux.config-file]
@@ -99,10 +103,9 @@ env = [
 
 # Vim rcfile - desktop
 [hoards.vim.rcfile-desktop]
-"linux|vim" = "${HOME}/"
-"windows|vim" = "${USERPROFILE}/vimfiles/"
+"linux|vim" = "${HOME}/.vimrc"
+"windows|vim" = "${USERPROFILE}/vimfiles/vimrc"
 
 # Vim rcfile - server
 [hoards.vim.rcfile-server]
 "linux_server|vim" = "${HOME}/.vimrc"
-"windows|vim" = "${USERPROFILE}/vimfiles/"
