@@ -97,9 +97,13 @@ env = [
 "linux|xdg_config_set|starship" = "${XDG_CONFIG_HOME}/starship.toml"
 "windows|starship" = "${USERPROFILE}/.config/starship.toml"
 
-# Tmux config file
-[hoards.tmux.config-file]
+# Tmux config file - desktop
+[hoards.tmux.conf-desktop]
 "linux|tmux" = "${HOME}/.tmux.conf"
+
+# Tmux config file - server
+[hoards.tmux.conf-server]
+"linux_server|tmux" = "${HOME}/.tmux.conf"
 
 # Vim rcfile - desktop
 [hoards.vim.rcfile-desktop]

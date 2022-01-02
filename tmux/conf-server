@@ -1,5 +1,5 @@
-# Set PREFIX to C-a
-set-option -g prefix C-a
+# Set PREFIX to C-g
+set-option -g prefix C-g
 # Set window indexing to 1
 set -g base-index 1
 # Set time between PREFIX and command to zero
@@ -9,8 +9,8 @@ setw -g aggressive-resize on
 # Capture mouse events
 set -g mouse on
 # Key Bindings
-## Ctrl-A jumps to prior window
-bind-key C-a last-window
+## Ctrl-g jumps to prior window
+bind-key C-g last-window
 ## Open new and split windows in PWD
 bind c new-window -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
