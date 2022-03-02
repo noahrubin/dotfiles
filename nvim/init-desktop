@@ -4,9 +4,9 @@ endif
 
 " vim-plug Configuration
 " Automatically install vim-plug and plugins if it's not installed already
-let data_dir = stdpath('data') . '/site'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+let data_dir = stdpath("data") . "/site"
+if empty(glob(data_dir . "/autoload/plug.vim"))
+  silent execute "!curl -fLo ".data_dir."/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -19,9 +19,17 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --rust-completer' }
 " NERDTree: https://github.com/preservim/nerdtree
 Plug 'preservim/nerdtree'
+" NERDTree Git Plugin: https://github.com/Xuyuanp/nerdtree-git-plugin
+Plug 'Xuyuanp/nerdtree-git-plugin'
 " Markdown Preview: https://github.com/iamcco/markdown-preview.nvim
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+" GitGutter: https://github.com/airblade/vim-gitgutter
+Plug 'airblade/vim-gitgutter'
 call plug#end()
+
+" GitGutter Configuration
+let g:gitgutter_map_keys = 0
+let g:gitgutter_signs = 0
 
 " YouCompleteMe Configuration
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -62,6 +70,7 @@ set mouse=nicr
 set spelllang=en
 " Buffer behavior
 set hidden
+set splitright
 " Syntax highlighting and color scheme
 set showmatch
 syntax enable
@@ -76,13 +85,50 @@ autocmd VimEnter * if (argc() > 0 && !isdirectory(argv()[0])) | NERDTree | wincm
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 "" Trigger `autoread` when files changes on disk
 set autoread
-autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != "c" | checktime | endif
 "" Notification after file change
 autocmd FileChangedShellPost *
     \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
 " Key Mappings
-"" Toggle NERDTree
-nnoremap <C-F> :NERDTreeToggleVCS<CR>
-"" Reload NERDTree Listing
-nnoremap <C-N> :NERDTreeRefreshRoot<CR>
+let mapleader=","
+"" Save and exit
+nnoremap <Leader>x :x<CR>
+"" Exit without saving
+nnoremap <Leader>q :qa!<CR>
+"" Clear search highlighting
+nnoremap <Leader>hc :nohl<CR>
+"" Move between splits using Ctrl + {hjkl}
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+"" GitGutter toggle
+nnoremap <Leader>gt :GitGutterToggle<CR>
+"" GitGutter hunk navigation
+nnoremap <Leader>gd :GitGutterPreviewHunk<CR>
+nnoremap <Leader>gn :GitGutterNextHunk<CR>
+nnoremap <Leader>gp :GitGutterPrevHunk<CR>
+nnoremap <Leader>gq :GitGutterQuickFix<CR>
+"" GitGutter fold unchanged lines
+nnoremap <Leader>gf :GitGutterFold<CR>
+"" GitGutter line number highlights
+nnoremap <Leader>gh :GitGutterLineNrHighlightsToggle<CR>
+"" NERDTree toggle
+nnoremap <Leader>nt :NERDTreeToggleVCS<CR>
+"" NERDTree reload listing
+nnoremap <Leader>nr :NERDTreeRefreshRoot<CR>
+"" YCM debug info
+nnoremap <Leader>yd :YcmDebugInfo<CR>
+"" YCM completer - format
+nnoremap <Leader>ycf :YcmCompleter Format<CR>
+"" YCM completer - goto
+nnoremap <Leader>ycg :YcmCompleter GoTo<CR>
+"" YCM completer - goto implementation
+nnoremap <Leader>ycgi :YcmCompleter GoToImplementation<CR>
+"" YCM completer - goto references
+nnoremap <Leader>ycgr :YcmCompleter GoToReferences<CR>
+"" YCM completer - goto symbol (search)
+nnoremap <Leader>ys :YcmCompleter GoToSymbol 
+"" YCM completer - rename
+nnoremap <Leader>yr :YcmCompleter RefactorRename 
