@@ -15,10 +15,10 @@ os = ["linux"]
 # Generic Linux server
 [envs.linux_server]
 os = ["linux"]
-# Proxy for determining if on Linux server or desktop
-# Assumes sshd does not run on desktops
-path_exists = [
-    "/etc/ssh/sshd_config",
+# Must explicitly set IS_SERVER environment variable on servers
+# Tried to use existence of sshd config file as proxy but not reliable
+env = [
+    { var = "IS_SERVER" }
 ]
 
 # Neovim - terminal or GUI
