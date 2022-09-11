@@ -11,16 +11,19 @@ if empty(glob(data_dir . "/autoload/plug.vim"))
 endif
 
 "" Uncomment the plugins below if needed:
-""  1. YouCompleteMe (code completion engine)
-""  2. nerdtree-git-plugin (Git integration with NERDTree to show file Git status)
-""  3. vim-gitgutter (Show Git information and diffs for file)
+""  1. YouCompleteMe LSP examples (code completion engine)
+""  2. YouCompleteMe (code completion engine)
+""  3. nerdtree-git-plugin (Git integration with NERDTree to show file Git status)
+""  4. vim-gitgutter (Show Git information and diffs for file)
 call plug#begin()
 " vim-airline: https://github.com/vim-airline/vim-airline
 Plug 'vim-airline/vim-airline'
 " nord-vim: https://github.com/arcticicestudio/nord-vim
 Plug 'arcticicestudio/nord-vim'
+"" " YouCompleteMe Examples: https://github.com/ycm-core/lsp-examples
+"" Plug 'ycm-core/lsp-examples'
 "" " YouCompleteMe: https://github.com/ycm-core/YouCompleteMe
-"" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --rust-completer' }
+"" Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --rust-completer --ts-completer' }
 " NERDTree: https://github.com/preservim/nerdtree
 Plug 'preservim/nerdtree'
 "" " NERDTree Git Plugin: https://github.com/Xuyuanp/nerdtree-git-plugin
